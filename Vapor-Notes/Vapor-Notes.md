@@ -40,6 +40,8 @@ Vapor will automatically look up the `id` of the `Acronym` that was passed to th
 
 ## Import / Export
 
+In order to have one template be substituted into another as an import, you must **extend** the container template in the sub template. You then **export** the parts of the HTML that you want to add into the container.
+
 **master.leaf**
 
 ~~~html
@@ -87,3 +89,12 @@ Vapor will automatically look up the `id` of the `Acronym` that was passed to th
 ## Nodes
 
 Make sure to use the function `.makeNode()` on properties before sending them to `View`s.
+
+## Grouped
+
+~~~swift
+let basic = drop.grouped("basic")
+basic.get("endpoint", handler: handler)
+~~~
+
+Now all routes are prefixed with the word "basic"
